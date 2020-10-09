@@ -4,6 +4,11 @@
  * @param {number} n
  * @returns {number}
  */
+
+ let m = 1;
+ let n = 1;
+
 function sum(m, n) {
-  // ваш код...
+  let summary = m + n;
+  return summary;
 }
