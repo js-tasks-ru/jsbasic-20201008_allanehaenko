@@ -4,13 +4,6 @@
  * @returns {Number}
  */
 function sumSalary(salaries) {
-  let sum = 0;
-  delete salaries.month;
-  delete salaries.currency;
-  delete salaries.isPayed;
-  for (let salary of Object.values(salaries)) {
-    sum += salary;
-  }
-
+  let sum = Object.values(salaries).reduce((sum, val) => sum + (!isNaN(val) ? val : 0), 0);
   return sum;
 }
