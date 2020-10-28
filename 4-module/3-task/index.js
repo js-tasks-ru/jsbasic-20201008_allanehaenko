@@ -4,26 +4,29 @@
  */
 
 function highlight(table) {
-    let rows = table.querySelectorAll("tr");
-    rows.cells.each(function(item){
-        let cellsAtr = item.getAttribute('data-available');
-        if (cellsAtr == 'true') {
-            table.classList.add('available');
-        } else if(cellsAtr == 'false') {
-            item.classList.add('unavailable');
-        } 
+    const cells = table.querySelectorAll('td[data-available]');
+
+    cells.forEach(cell => {
+      const row = cell.closest('tr');
+      if (cell.dataset.available == 'true') {
+        row.classList.add('available');
+      } else if(cell.dataset.available == 'false') {
+        row.classList.add('unavailable');
+      }
     });
+
+    let rowLength = table.rows.length;
+    for(let i = 0;i<rowLength;i++){
+      if(table.rows[i].cells[2].innerHTML == 'm') {
+        table.rows[i].classList.add('male');
+      } else if(table.rows[i].cells[2].innerHTML == 'f') {
+        table.rows[i].classList.add('female');
+      }
+  }
+
+  for(let i = 0;i<rowLength;i++){
+    if(table.rows[i].cells[1].innerHTML < 18) {
+      table.rows[i].cells[1].style.textDecoration = "line-through";
 }
-
-// function highlight(table) {
-//     let cells = table.querySelectorAll("td");
-//     cells.forEach(function(item){
-//         let cellsAtr = item.getAttribute('data-available');
-//         if (cellsAtr == 'true') {
-//             table.classList.add('available');
-//         } else if(cellsAtr == 'false') {
-//             item.classList.add('unavailable');
-//         } 
-//     });
-// }
-
+}
+}  
